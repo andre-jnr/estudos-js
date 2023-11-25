@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estrutura de um JSON</title>
+  </head>
+  <body>
+    <p>Abra o console</p>
+    <script>
+      let cursos_json =
+        '{"cursos": [' +
+        '{"nome":"python", "instituição":"Curso em vídeo"},' +
+        '{"nome":"IA", "instituição":"CETAM"},' +
+        '{"nome":"javascript", "instituição":"UDEMY"}' +
+        ']}'
+
+      console.log(cursos_json)
+
+      // JSON.stringify para objeto em jsons
+      let cursos_objeto = JSON.parse(cursos_json)
+      console.log(cursos_objeto)
+
+      console.log(cursos_objeto.cursos)
+      console.log(cursos_objeto.cursos[0])
+      console.log(cursos_objeto.cursos[0].nome)
+    </script>
+  </body>
+</html>

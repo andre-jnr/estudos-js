@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consumindo api com JS</title>
+  </head>
+  <body>
+    <h1>ViaCep</h1>
+
+    <form action="text" method="post">
+      <label for="cep">Cep: </label>
+      <input type="text" name="cep-input" id="cep-input" required />
+      <br />
+      <br />
+      <input type="button" value="Pesquisar cep" onclick="getText()" />
+    </form>
+
+    <div>
+      <p id="cep">Cep:</p>
+      <p id="localidade">Localidade:</p>
+    </div>
+    <script>
+      function getText() {
+        let cep_input = document.querySelector('#cep-input').value
+        console.log(cep_input)
+
+        let cep = document.querySelector('#cep')
+        let localidade = document.querySelector('#localidade')
+
+        console.log(`variavel: ${cep_input}`)
+        fetch(`https://viacep.com.br/ws/${cep_input}/json/`).then(response =>
+          response.json().then(data => {
+            console.log(data)
+            cep.innerHTML = `Cep: ${data.cep}`
+            localidade.innerHTML = `Localidade: ${data.localidade}`
+          })
+        )
+      }
+    </script>
+  </body>
+</html>

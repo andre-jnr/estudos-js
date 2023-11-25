@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudos de Json</title>
+  </head>
+  <body>
+    <div id="usuarios"></div>
+    <script>
+      let divUsuarios = document.querySelector('#usuarios')
+
+      // fetch: buscar / then (então faça isso => {})
+      fetch('dados.json').then(response => {
+        // resposta seja um json, então =>
+        response.json().then(dados => {
+          // map percorre a array, o parametro é o nome da variavel
+          dados.usuarios.map(usuario => {
+            // dentro da div adicione um conteudo html
+            divUsuarios.innerHTML += `<li> ${usuario.nome} - ${usuario.idade} anos</li>`
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
